@@ -1,0 +1,43 @@
+.AddTodoForm {
+  width: 100%;
+  height: calc(100vh - 240px);
+  position: fixed;
+  bottom: 100px;
+}
+
+.Title {
+  font-size: 1.8rem;
+  font-weight: bolder;
+  word-wrap: break-word;
+  padding-bottom: 50px;
+}
+
+.Content {
+  background-color: #46529e;
+  margin: 16px;
+  border: 2px solid #64cdf3;
+  height: -webkit-fill-available;
+  border-radius: 8px;
+  padding: 25px 15px 10px 15px;
+}
+
+.Content ion-item {
+  color: white;
+  font-weight: 500;
+}
+
+.CloseBtn {
+  background-color: transparent;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.CloseIcon {
+  font-size: 3rem;
+}
+
+.SaveBtn {
+  margin-top: 35px;
+  background-color: #2dbaed;
+}

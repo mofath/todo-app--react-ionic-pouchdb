@@ -1,0 +1,7 @@
+{
+  "name": "note-app--react-ionic-pouchdb-demo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

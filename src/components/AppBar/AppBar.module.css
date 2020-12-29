@@ -1,0 +1,32 @@
+.AppBar {
+  height: 25vh;
+  --background: url("../../assets/header.jpg") center / 100%
+    rgba(255, 0, 150, 0.3);
+  position: relative;
+  border: none;
+  display: flex;
+}
+
+.AppBar:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #335192;
+  opacity: 0.9;
+}
+
+.Title {
+  vertical-align: middle;
+  font-size: 25px;
+  color: white;
+}
+
+br {
+  content: "";
+  margin: 2em;
+  display: block;
+  font-size: 24%;
+}

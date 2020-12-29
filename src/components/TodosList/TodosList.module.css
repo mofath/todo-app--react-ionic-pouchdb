@@ -1,0 +1,36 @@
+.TodosList {
+  background-color: white;
+  margin: 16px;
+  height: -webkit-fill-available;
+  border-radius: 8px;
+}
+
+.TodosList ion-item {
+  --border-color: grey;
+  --highlight-color-invalid: red;
+  --highlight-color-valid: black;
+  --border-color: #efefef;
+}
+
+.TodosList ion-icon {
+  font-size: 2rem;
+}
+
+.TodosList ion-item-options {
+  background-color: #f0f0f0;
+}
+
+.TodosList ion-item p {
+  font-size: 1.2rem;
+}
+
+.TodosList ion-item p.Checked {
+  text-decoration: line-through rgba(250, 106, 107, 1);
+}
+
+.TodosListHeader {
+  font-size: 1.7rem;
+  color: black;
+  margin: 16px;
+  font-weight: bold;
+}
