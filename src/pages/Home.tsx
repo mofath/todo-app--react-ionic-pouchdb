@@ -1,34 +1,17 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useContext } from "react";
 import { IonFab, IonFabButton, IonIcon, IonPage } from "@ionic/react";
 import { add } from "ionicons/icons";
 import { AppBar, AddTodoForm, TodosList } from "../components";
-import { addTodo, fetchTodos } from "../services/pouchDB";
+
+import TodosContext from "../context/TodosContext";
 
 const Home: React.FC = () => {
-  const [showForm, setshowForm] = useState(false);
-  const [todos, setTodos] = useState<any[]>([]);
-
-  const getTodos = useCallback(() => {
-    fetchTodos().then((data: any) => {
-      setTodos(data);
-    });
-  }, []);
-
-  useEffect(() => getTodos(), [getTodos]);
+  const { todos, addNewTodo } = useContext(TodosContext);
+  const [showForm, setshowForm] = useState<boolean>(false);
 
   const handleSave = async (title: any, status: any) => {
-    const newTodo = {
-      title,
-      status,
-      date: Date.now(),
-    };
-    const { response } = await addTodo(newTodo);
-    if (response?.ok) {
-      setTodos((prevState) => {
-        return [...prevState, { ...newTodo, id: response.id }];
-      });
-      setshowForm(false);
-    }
+    await addNewTodo(title, status);
+    setshowForm(false);
   };
 
   return (

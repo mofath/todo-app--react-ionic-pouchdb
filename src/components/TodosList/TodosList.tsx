@@ -17,7 +17,7 @@ const TodosList: React.FC<{
 }> = ({ todos }) => {
   return (
     <IonContent>
-      <div className={classes.TodosListHeader}>List</div>
+      <div className={classes.TodosListHeader}>Todos List</div>
 
       <IonList class={classes.TodosList}>
         {todos.length > 0 ? (

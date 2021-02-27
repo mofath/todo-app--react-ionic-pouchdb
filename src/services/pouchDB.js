@@ -2,7 +2,9 @@ import PouchDB from "pouchdb-core";
 import SqlitePlugin from "pouchdb-adapter-cordova-sqlite";
 
 PouchDB.plugin(SqlitePlugin);
-const localTaskDB = new PouchDB("tasks-db", { adapter: "cordova-sqlite" });
+export const localTaskDB = new PouchDB("tasks-db", {
+  adapter: "cordova-sqlite",
+});
 // const remoteNoteDb = new PouchDB(`http://localhost/mydb`);
 
 window.sqlitePlugin = window.sqlitePlugin || SqlitePlugin;
@@ -33,16 +35,30 @@ export const fetchTodos = async () => {
     } catch (err) {
       console.log(err.message);
     }
-    return allTodos;
+    return { allTodos };
   };
 
-  // localTaskDB
-  //   .changes({ live: true, since: "now", include_docs: true })
-  //   .on("change", () => {
-  //     allDocs().then((todos) => {
-  //       return (allTodos = todos);
-  //     });
-  //   });
-
   return await allDocs();
+};
+
+export const removeAllTodos = () => {
+  return new Promise((resolve, reject) => {
+    localTaskDB.allDocs().then(function (_response) {
+      var toBeDeleted = _response.rows.length;
+      _response.rows.forEach(function (row) {
+        localTaskDB.remove(row.id, row.value.rev, function (err) {
+          if (!err) {
+            console.log(`document with id ${row.id} was deleted`);
+            if (--toBeDeleted === 0) {
+              console.log("done");
+              resolve(false);
+            }
+          } else {
+            console.error(err.message);
+            reject(true);
+          }
+        });
+      });
+    });
+  });
 };

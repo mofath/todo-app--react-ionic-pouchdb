@@ -3,11 +3,12 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
 
-import * as serviceWorker from "./serviceWorker";
+import TodosContextProvider from "./context/TodosContextProvider";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const app = (
+  <TodosContextProvider>
+    <App />
+  </TodosContextProvider>
+);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(app, document.getElementById("root"));
